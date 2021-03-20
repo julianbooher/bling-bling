@@ -1,17 +1,23 @@
 const express = require('express'); 
 const mongoose = require('mongoose');
 // const cors = require('cors');
-const router = require('./transactions');
 require('dotenv').config()
 
 const app = express(); 
 const PORT = 3001; 
 const MONGODB_URI = `mongodb+srv://julianbooher:${process.env.MONGO_CLUSTER_PW}@julianbooher.o1lfx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`; 
 
+const transactionRouter = require('./transaction');
+
 // app.use(cors())
 app.use(express.urlencoded({ extended: true })); 
 app.use(express.json());
-app.use('/api', router); 
+
+// Routes 
+app.use('/api/transaction', transactionRouter); 
+
+// Serve static files
+app.use(express.static('build'));
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useFindAndModify: false }); 
 mongoose.connection.once('open', ()=> { 
@@ -21,6 +27,7 @@ mongoose.connection.on('error', (error)=> {
   console.log('Mongoose Connection Error : ' + error);
 });
 
+// Listen
 app.listen(PORT, ()=> { 
   console.log(`Server listening on port ${PORT}.`);
 });
