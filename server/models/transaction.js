@@ -7,11 +7,12 @@ const transactionSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
+    default: Date.now,
     required: [true, "Date can't be blank"]
   },
   cost: {
-      type: Number,
-      required: [true, "Cost is required"]
+    type: Number,
+    required: [true, "Cost is required"]
   }
 });
 
