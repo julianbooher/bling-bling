@@ -5,6 +5,10 @@ const transactionSchema = new mongoose.Schema({
     type: String,
     required: [true, "Name is required"]
   },
+  buyer: {
+    type: String,
+    required: [true, "Buyer is required"]
+  },
   date: {
     type: Date,
     default: Date.now,
