@@ -7,13 +7,7 @@ import {
 } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
-
-
-
-import './App.css';
+import Home from '../Home/Home.jsx';
 
 class App extends Component {
 
@@ -21,7 +15,6 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Nav />
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
@@ -29,10 +22,9 @@ class App extends Component {
             <Route
               exact
               path="/home"
-              component={home}
+              component={Home}
             />
           </Switch>
-          <Footer />
         </div>
       </Router>
     );
