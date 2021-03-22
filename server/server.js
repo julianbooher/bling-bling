@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config()
 
 const app = express(); 
-const PORT = 3001; 
+const PORT = process.env.PORT || 5000;
 const MONGODB_URI = `mongodb+srv://julianbooher:${process.env.MONGO_CLUSTER_PW}@julianbooher.o1lfx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`; 
 
 const transactionRouter = require('./routes/transaction.router');
