@@ -30,9 +30,9 @@ const useStyles = makeStyles((theme) => ({
       const classes = useStyles();
       const [values, setValues] = useState({
           name: '',
-          cost: null,
-          date: null,
-          buyer: null
+          cost: 0,
+          date: '',
+          buyer: ''
       })
 
       const handleChange = (prop) => (event) => {
