@@ -5,9 +5,13 @@ const transactionSchema = new mongoose.Schema({
     type: String,
     required: [true, "Name is required"]
   },
-  buyer: {
+  owes: {
     type: String,
-    required: [true, "Buyer is required"]
+    required: [true, "Owes is required"]
+  },
+  owed: {
+    type: String,
+    required: [true, "Owed is required"]
   },
   date: {
     type: Date,
