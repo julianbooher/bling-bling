@@ -10,6 +10,9 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -66,69 +69,75 @@ return (
         {JSON.stringify(values)}
         <br></br>
         <div className={classes.root}>
-            <form onSubmit={handleSubmit}>
-            <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel id="demo-simple-select-outlined-label">Name</InputLabel>
-                <Select
-                    labelId="demo-simple-select-outlined-label"
-                    id="demo-simple-select-outlined"
-                    value={values.owes}
-                    onChange={handleChange('owes')}
-                    required
-                    label="Name"
-                >
-                <MenuItem value="">
-                    <em>None</em>
-                </MenuItem>
-                {people.map((person, i) => (
-                    <MenuItem key={i} value={person}>{person}</MenuItem>
-                ))}
+            <Grid container>
 
-                </Select>
-            </FormControl>
-            <p>Owes</p>
-            <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel id="demo-simple-select-outlined-label">Name</InputLabel>
-                <Select
-                    labelId="demo-simple-select-outlined-label"
-                    id="demo-simple-select-outlined"
-                    value={values.owed}
-                    onChange={handleChange('owed')}
-                    required
-                    label="Name"
-                >
-                <MenuItem value="">
-                    <em>None</em>
-                </MenuItem>
-                {people.map((person, i) => (
-                    <MenuItem key={i} value={person}>{person}</MenuItem>
-                ))}
+                <form onSubmit={handleSubmit}>
+                <FormControl variant="outlined" className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-outlined-label">Name</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
+                        value={values.owes}
+                        onChange={handleChange('owes')}
+                        required
+                        label="Name"
+                    >
+                    <MenuItem value="">
+                        <em>None</em>
+                    </MenuItem>
+                    {people.map((person, i) => (
+                        <MenuItem key={i} value={person}>{person}</MenuItem>
+                    ))}
 
-                </Select>
-            </FormControl>
-            <FormControl className={classes.margin} variant="outlined">
-                <InputLabel htmlFor="outlined-adornment-cost">Cost</InputLabel>
-                <OutlinedInput
-                    id="outlined-adornment-cost"
-                    value={values.cost}
-                    onChange={handleChange('cost')}
-                    startAdornment={<InputAdornment position="start">$</InputAdornment>}
-                    label="cost"
-                    required
-                    type="number"
+                    </Select>
+                </FormControl>
+                <p>Owes</p>
+                <FormControl variant="outlined" className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-outlined-label">Name</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
+                        value={values.owed}
+                        onChange={handleChange('owed')}
+                        required
+                        label="Name"
+                    >
+                    <MenuItem value="">
+                        <em>None</em>
+                    </MenuItem>
+                    {people.map((person, i) => (
+                        <MenuItem key={i} value={person}>{person}</MenuItem>
+                    ))}
+
+                    </Select>
+                </FormControl>
+                <FormControl className={classes.margin} variant="outlined">
+                    <InputLabel htmlFor="outlined-adornment-cost">Cost</InputLabel>
+                    <OutlinedInput
+                        id="outlined-adornment-cost"
+                        value={values.cost}
+                        onChange={handleChange('cost')}
+                        startAdornment={<InputAdornment position="start">$</InputAdornment>}
+                        label="cost"
+                        required
+                        type="number"
+                    />
+                </FormControl>
+                <FormControl className={classes.margin} variant="outlined">
+                <TextField 
+                    id="outlined-basic" 
+                    variant="outlined"
+                    label="Expense Name" 
+                    value={values.name}
+                    onChange={handleChange('name')}
                 />
-            </FormControl>
-            <FormControl className={classes.margin} variant="outlined">
-            <TextField 
-                id="outlined-basic" 
-                variant="outlined"
-                label="Expense Name" 
-                value={values.name}
-                onChange={handleChange('name')}
-            />
-            </FormControl>
+                </FormControl>
+                <Button variant="contained" color="primary" type="submit">
+                    Primary
+                </Button>
 
-            </form>
+                </form>
+            </Grid>
         </div>
     </div>
     )
