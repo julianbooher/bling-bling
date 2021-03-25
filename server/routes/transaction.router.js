@@ -5,8 +5,8 @@ const Transaction = require('../models/transaction');
 
 
 router.get('/', function(req, res) { 
-    Transaction.find(function(err, transactions) {
-      res.json(transactions);
+    Transaction.find({}).sort({'date': -1}).exec((err, transactions) => {
+      res.send(transactions);
     });
   });
 
@@ -15,7 +15,7 @@ router.get('/:id', function(req, res) {
     if (!transaction) {
       res.status(404).send('No result found');
     } else {
-      res.json(transaction);
+      res.send(transaction);
     }
   });
 });

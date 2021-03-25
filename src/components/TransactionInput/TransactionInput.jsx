@@ -43,18 +43,20 @@ const people = [
     'Teaghan'
 ]
 
+const defaultState = {
+    owes: '',
+    owed: '',
+    cost: 0,
+    name: ''
+}
+
   
   
 export default function TransactionInput() {
     const classes = useStyles();
     const dispatch = useDispatch();
 
-    const [values, setValues] = useState({
-        owes: '',
-        owed: '',
-        cost: 0,
-        name: ''
-    })
+    const [values, setValues] = useState(defaultState)
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
@@ -64,6 +66,7 @@ export default function TransactionInput() {
         event.preventDefault();
         console.log(values);
         dispatch({type: 'POST_NEW_TRANSACTION', payload: values})
+        setValues(defaultState)
 
     }
 

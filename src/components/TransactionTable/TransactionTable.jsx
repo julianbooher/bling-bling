@@ -11,6 +11,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+import moment from 'moment';
+
 const useStyles = makeStyles({
     table: {
       maxWidth: 900,
@@ -38,7 +40,7 @@ export default function TransactionTable() {
                         {transactions.map((transaction) => (
                             <TableRow key={transaction._id}>
                                 <TableCell>{transaction.owes} owes {transaction.owed} {transaction.cost} for {transaction.name}</TableCell>
-                                <TableCell>{transaction.date}</TableCell>
+                                <TableCell>{moment.utc(transaction.date).local().format('MM/DD/YYYY')}</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
