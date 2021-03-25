@@ -10,6 +10,7 @@ export default function Home(){
 
     useEffect(()=> {
         dispatch({type: 'FETCH_ALL_TRANSACTIONS'})
+        dispatch({type: 'FETCH_ALL_DEBTS'})
     }, [])
 
     return (

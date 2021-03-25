@@ -8,6 +8,7 @@ const PORT = process.env.PORT || 5000;
 const MONGODB_URI = `mongodb+srv://julianbooher:${process.env.MONGO_CLUSTER_PW}@julianbooher.o1lfx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`; 
 
 const transactionRouter = require('./routes/transaction.router');
+const debtRouter = require('./routes/debt.router');
 
 // app.use(cors())
 app.use(express.urlencoded({ extended: true })); 
@@ -15,6 +16,7 @@ app.use(express.json());
 
 // Routes 
 app.use('/api/transaction', transactionRouter); 
+app.use('/api/debt', debtRouter); 
 
 // Serve static files
 app.use(express.static('build'));
