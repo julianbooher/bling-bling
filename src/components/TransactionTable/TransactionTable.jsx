@@ -13,23 +13,16 @@ import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles({
     table: {
-      minWidth: 650,
       maxWidth: 900,
     },
     tableContainer: {
-        minWidth: 650,
         maxWidth: 900,
       },
   });
 
 export default function TransactionTable() {
     const classes = useStyles();
-    const dispatch = useDispatch();
     const transactions = useSelector(state => state.transactions);
-    
-    useEffect(()=> {
-        dispatch({type: 'FETCH_ALL_TRANSACTIONS'})
-    }, [])
     
     return (
         <div>  
@@ -37,18 +30,14 @@ export default function TransactionTable() {
                 <Table className={classes.table} size="small" aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Expense Name</TableCell>
-                            <TableCell>Cost</TableCell>
-                            <TableCell>Buyer</TableCell>
+                            <TableCell>Expense</TableCell>
                             <TableCell>Date</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {transactions.map((transaction) => (
                             <TableRow key={transaction._id}>
-                                <TableCell>{transaction.name}</TableCell>
-                                <TableCell>{transaction.cost}</TableCell>
-                                <TableCell></TableCell>
+                                <TableCell>{transaction.owes} owes {transaction.owed} {transaction.cost} for {transaction.name}</TableCell>
                                 <TableCell>{transaction.date}</TableCell>
                             </TableRow>
                         ))}

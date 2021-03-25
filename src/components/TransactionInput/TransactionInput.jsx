@@ -27,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
     },
     formControl: {
         margin: theme.spacing(1),
-        minWidth: 150,
-        maxWidth: '20%'
+        minWidth: '25%',
+        maxWidth: '40%'
     },
     selectEmpty: {
         marginTop: theme.spacing(2),
@@ -47,6 +47,8 @@ const people = [
   
 export default function TransactionInput() {
     const classes = useStyles();
+    const dispatch = useDispatch();
+
     const [values, setValues] = useState({
         owes: '',
         owed: '',
@@ -62,6 +64,7 @@ export default function TransactionInput() {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log(values);
+        dispatch({type: 'POST_NEW_TRANSACTION', payload: values})
 
     }
 

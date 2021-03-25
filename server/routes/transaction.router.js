@@ -21,6 +21,7 @@ router.get('/:id', function(req, res) {
 });
 
 router.post('/', function(req, res) {     
+    console.log(req.body)
     let transaction = new Transaction(req.body);
     transaction.save()
       .then(transaction => {
