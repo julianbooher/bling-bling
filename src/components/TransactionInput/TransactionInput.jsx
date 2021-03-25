@@ -53,7 +53,6 @@ export default function TransactionInput() {
         owes: '',
         owed: '',
         cost: 0,
-        date: '',
         name: ''
     })
 
