@@ -8,14 +8,21 @@ router.get('/', function(req, res) {
     const {owes, owed} = req.body;
     const pipeline = [
         {
-            '$match':{
-                'owes': owes,
-                'owed': owed
+          '$match': {
+            'owes': owes, 
+            'owed': owed
+          }
+        }, {
+          '$group': {
+            '_id': null, 
+            'total': {
+              '$sum': '$cost'
             }
+          }
         }
-    ]
-    Transaction.find({}).sort({'date': -1}).exec((err, transactions) => {
-      res.send(transactions);
+      ]
+    Transaction.aggregate(pipeline, (err, result) => {
+      res.send(result[0]);
     });
   });
 
