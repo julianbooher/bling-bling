@@ -5,12 +5,12 @@ const Transaction = require('../models/transaction');
 
 
 router.get('/', function(req, res) { 
-    const {owes, owed} = req.body;
+    const {userOne, userTwo} = req.body;
     const pipeline = [
         {
           '$match': {
-            'owes': owes, 
-            'owed': owed
+            'owes': userOne, 
+            'owed': userTwo
           }
         }, {
           '$group': {
