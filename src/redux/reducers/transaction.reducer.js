@@ -1,17 +1,15 @@
 import { combineReducers } from 'redux';
 
-// Reducer for transactions to be displayed on the table.
-const debts = (state = [], action) => {
+// Reducer for errors in the transaction submission input field.
+const transactions = (state = [], action) => {
   switch (action.type) {
-    case 'SET_ALL_DEBTS':
+    case 'SET_ALL_TRANSACTIONS':
         return action.payload;
-    case 'CLEAR_DEBTS':
+    case 'CLEAR_TRANSACTIONS':
         return [];
     default:
         return state;
   }
 };
 
-// TODO reducer for edit field errors.
-
-export default debts;
+export default transactions;
