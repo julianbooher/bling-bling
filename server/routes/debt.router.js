@@ -6,21 +6,43 @@ const Transaction = require('../models/transaction');
 
 router.get('/', function(req, res) { 
     const {userOne, userTwo} = req.body;
+    console.log(userOne + userTwo)
     const pipeline = [
-        {
-          '$match': {
-            'owes': userOne, 
-            'owed': userTwo
+      {
+          '$facet': {
+              'userOneOwes': [
+                  {
+                      '$match': {
+                          'owes': userOne, 
+                          'owed': userTwo
+                      }
+                  }, {
+                      '$group': {
+                          '_id': 'None', 
+                          'total': {
+                              '$sum': '$cost'
+                          }
+                      }
+                  }
+              ], 
+              'userTwoOwes': [
+                  {
+                      '$match': {
+                          'owes': userTwo, 
+                          'owed': userOne
+                      }
+                  }, {
+                      '$group': {
+                          '_id': 'None', 
+                          'total': {
+                              '$sum': '$cost'
+                          }
+                      }
+                  }
+              ]
           }
-        }, {
-          '$group': {
-            '_id': null, 
-            'total': {
-              '$sum': '$cost'
-            }
-          }
-        }
-      ]
+      }
+  ]
     Transaction.aggregate(pipeline, (err, result) => {
       res.send(result[0]);
     });
