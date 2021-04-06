@@ -28,7 +28,15 @@ export default function TransactionTable() {
     
     return (
         <div>  
-            {JSON.stringify(debt)}
+            {Object.keys(debt).length &&
+            <>
+                {debt.userOneOwes[0].total > debt.userTwoOwes[0].total ? 
+                <h2>Julian owes Teaghan ${debt.userOneOwes[0].total - debt.userTwoOwes[0].total}</h2>
+                :
+                <h2>Teaghan owes Julian ${debt.userTwoOwes[0].total - debt.userOneOwes[0].total}</h2>
+                }
+            </>
+            }
         </div>
     )
 }

@@ -10,6 +10,7 @@ function* postNewTransaction(action) {
     console.log(action.payload)
     yield axios.post(`/api/transaction`, action.payload);
     yield put({type:'FETCH_ALL_TRANSACTIONS'});
+    yield put({type: 'FETCH_ALL_DEBTS', payload: {userOne: 'Julian', userTwo: 'Teaghan'}})
 }
 
 function* transactionSaga() {
