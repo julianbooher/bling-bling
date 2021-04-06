@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
 // Reducer for transactions to be displayed on the table.
-const debts = (state = [], action) => {
+const debt = (state = [], action) => {
   switch (action.type) {
-    case 'SET_ALL_DEBTS':
+    case 'SET_ALL_DEBT':
         return action.payload;
-    case 'CLEAR_DEBTS':
+    case 'CLEAR_DEBT':
         return [];
     default:
         return state;
@@ -14,4 +14,4 @@ const debts = (state = [], action) => {
 
 // TODO reducer for edit field errors.
 
-export default debts;
+export default debt;

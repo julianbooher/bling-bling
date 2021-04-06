@@ -4,7 +4,8 @@ import axios from 'axios';
 function* fetchAllDebts(action) {
     console.log(action.payload)
     const response = yield axios.post(`/api/debt`, action.payload);
-    yield put({type:'SET_ALL_DEBTS', payload: response.data});
+    yield console.log(response.data)
+    yield put({type:'SET_ALL_DEBT', payload: response.data});
 }
 
 function* transactionSaga() {

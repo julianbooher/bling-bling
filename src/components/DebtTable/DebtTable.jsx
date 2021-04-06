@@ -24,11 +24,11 @@ const useStyles = makeStyles({
 
 export default function TransactionTable() {
     const classes = useStyles();
-    const debts = useSelector(state => state.debts);
+    const debt = useSelector(state => state.debt);
     
     return (
         <div>  
-            {JSON.stringify(debts)}
+            {JSON.stringify(debt)}
         </div>
     )
 }
