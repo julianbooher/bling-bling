@@ -2,7 +2,8 @@ import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* fetchAllDebts(action) {
-    const response = yield axios.get(`/api/debt`);
+    console.log(action.payload)
+    const response = yield axios.post(`/api/debt`, action.payload);
     yield put({type:'SET_ALL_DEBTS', payload: response.data});
 }
 
