@@ -6,7 +6,6 @@ const Transaction = require('../models/transaction');
 
 router.post('/', function(req, res) { 
     const {userOne, userTwo} = req.body;
-    console.log('inside debt router' + userOne + userTwo)
     const pipeline = [
       {
           '$facet': {
